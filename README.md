@@ -134,20 +134,177 @@ http://localhost:5173/
 
 ---
 
-## 7. Ramas y Flujo de Trabajo Git
+## 7. Ramas y Flujo de Trabajo Git (Guía Paso a Paso para el Equipo)
 
-* **Rama Principal (`main`):** Rama de producción del repositorio. Es una rama protegida y estable; no recibe commits directos, únicamente integraciones probadas mediante Pull Requests.
-* **Ramas de Trabajo por Integrante:** Cada miembro del equipo trabaja de forma aislada en una rama nombrada con su nombre de pila para implementar su módulo asignado:
-  * `Kenny` ➔ **Kenny Garay**: Interfaz de autenticación, control de sesiones, protección de rutas y auditoría de accesos.
-  * `Hector` ➔ **Héctor Urbano**: Panel de asignación de limpieza, actualización de estados de cuarto y reporte de averías.
-  * `David` ➔ **David Asto**: Interfaz del Rack de habitaciones, filtros por piso y modales de Check-in.
-  * `Erik` ➔ **Erik Barrera**: Formulario de búsqueda y registro de huéspedes, y tarjetas de estadísticas del Dashboard.
-  * `Eliseo` ➔ **Eliseo Mariño**: Terminal visual de punto de venta (POS), catálogo con control de stock y panel de caja.
-* **Flujo de Integración:**
-  1. Cada desarrollador realiza commits descriptivos en su rama personal.
-  2. Se verifica que el proyecto compile localmente (`npm run build`).
-  3. Se genera un **Pull Request** hacia `main`.
-  4. El Líder de Proyecto (**Kenny Garay**) revisa el código, resuelve conflictos si existieran y aprueba el *merge*.
+### 7.1. Ramas Oficiales del Proyecto
+* **Rama Principal (`main`):** Rama de producción oficial, estable y protegida. **Está prohibido hacer commits directos a `main`**. Todo cambio debe ingresar exclusivamente mediante Pull Request validado.
+* **Ramas Asignadas por Integrante:**
+  * `Kenny` ➔ **Kenny Garay** (Acceso, Seguridad y Auditoría)
+  * `Hector` ➔ **Héctor Urbano** (Servicios del Hotel — Limpieza, Mantenimiento y Averías)
+  * `David` ➔ **David Asto** (Recepción y Habitaciones — Rack)
+  * `Erik` ➔ **Erik Barrera** (Huéspedes y Dashboard de KPIs)
+  * `Eliseo` ➔ **Eliseo Mariño** (Punto de Venta — POS, Inventario y Caja)
+
+---
+
+### 7.2. Guía Práctica de Trabajo con Git y Visual Studio Code
+
+#### Paso 1: Clonar el repositorio y abrir en VS Code
+Tienes dos formas sencillas de hacerlo:
+
+* **Opción A: Desde Visual Studio Code (Recomendado):**
+  1. Abre **Visual Studio Code**.
+  2. Presiona la combinación de teclas `Ctrl + Shift + P` para abrir la paleta de comandos.
+  3. Escribe `Git: Clone` y presiona **Enter**.
+  4. Pega la URL del repositorio:
+     ```
+     https://github.com/lFateGC/HOTELAVENTURA-FRONTEND.git
+     ```
+  5. Selecciona la carpeta en tu computadora donde deseas guardarlo (por ejemplo: `C:\Proyectos`).
+  6. Cuando VS Code termine de clonar, haz clic en **"Open" / "Abrir repositorio"**.
+
+* **Opción B: Desde la Terminal (PowerShell / Git Bash):**
+  ```bash
+  # 1. Ve a la carpeta donde guardas tus proyectos
+  cd C:\Users\TuUsuario\Desktop\Proyectos
+
+  # 2. Clona el repositorio
+  git clone https://github.com/lFateGC/HOTELAVENTURA-FRONTEND.git
+
+  # 3. Entra a la carpeta del proyecto
+  cd HOTELAVENTURA-FRONTEND
+
+  # 4. Abre el proyecto en VS Code
+  code .
+  ```
+
+---
+
+#### Paso 2: Cambiarte a tu Rama de Trabajo Asignada
+
+Cada integrante debe trabajar en su rama personal para no sobreescribir el trabajo de los demás:
+
+* **Desde la Terminal:**
+  ```bash
+  # Ver en qué rama estás actualmente
+  git branch
+
+  # Si tu rama ya existe en el remoto (ejemplo para Héctor):
+  git checkout Hector
+
+  # Si vas a crear tu rama localmente a partir de lo último de main:
+  git checkout -b Hector origin/main
+  ```
+  *(Reemplaza `Hector` por tu propio nombre: `David`, `Erik`, `Eliseo` o `Kenny`)*
+
+* **Desde la Interfaz de VS Code:**
+  1. En la **esquina inferior izquierda** de la barra de estado de VS Code, verás el nombre de la rama actual (por ejemplo, `main`).
+  2. Haz clic sobre ese nombre. Se desplegará una lista de ramas en la parte superior.
+  3. Selecciona tu rama asignada (o haz clic en *"Create new branch..."* con tu nombre).
+
+---
+
+#### Paso 3: ¿Cómo sincronizar tu rama con lo último de `main`? *(¡Muy Importante!)*
+Cuando el líder o un compañero integre nuevas funciones a `main`, debes actualizar tu rama personal para tener siempre el código más reciente y evitar conflictos:
+
+```bash
+# 1. Asegúrate de estar posicionado en tu rama personal
+git checkout Hector
+
+# 2. Trae y fusiona los últimos cambios de main hacia tu rama
+git pull origin main
+```
+
+> **¿Qué hace este comando?** Descarga de GitHub todas las actualizaciones de `main` y las une automáticamente con tu rama personal, manteniendo todo al día.
+> 
+> *En VS Code:* Puedes presionar `Ctrl + Shift + P` ➔ escribir `Git: Pull From...` ➔ elegir `origin` ➔ seleccionar `origin/main`.
+
+---
+
+#### Paso 4: Trabajar, confirmar cambios (Commits) y buenas prácticas
+
+Mientras avances con el código de tu módulo:
+
+1. **Revisar qué archivos has modificado:**
+   ```bash
+   git status
+   ```
+2. **Agregar los archivos preparados para el commit:**
+   ```bash
+   git add .
+   ```
+3. **Crear el commit con un mensaje descriptivo:**
+   ```bash
+   git commit -m "feat(rack): implementación de filtros por piso"
+   ```
+   *Convención sugerida para los mensajes de commit:*
+   * `feat:` Para una nueva funcionalidad (ej. `feat(pos): agregar botón de cobro`)
+   * `fix:` Para corregir un error (ej. `fix(login): validación de contraseña vacía`)
+   * `style:` Para cambios visuales o de CSS (ej. `style(rack): ajustar tarjetas de habitaciones`)
+   * `docs:` Para cambios en documentación o README (ej. `docs: actualizar guía de instalación`)
+
+* **Hacer el Commit en VS Code con interfaz gráfica:**
+  1. Abre la pestaña **Control de código fuente** (*Source Control*) en la barra lateral izquierda (`Ctrl + Shift + G`).
+  2. En el recuadro superior, escribe el mensaje de tu commit (ejemplo: `feat: diseño de modal de check-in`).
+  3. Haz clic en el botón azul **Commit** (o presiona `Ctrl + Enter`).
+
+---
+
+#### Paso 5: Subir tus avances a GitHub (`git push`)
+
+Una vez que hayas realizado tus commits y probado que todo compile sin errores:
+
+```bash
+# 1. Probar que el build compila correctamente
+npm run build
+
+# 2. Subir tu rama personal a GitHub
+git push origin Hector
+```
+*(Reemplaza `Hector` por el nombre de tu rama)*
+
+* **En VS Code:** Haz clic en el botón **"Sync Changes" / "Sincronizar cambios"** o haz clic en los tres puntos `...` del panel de Git y selecciona **Push**.
+
+---
+
+#### Paso 6: Crear un Pull Request (PR) en GitHub hacia `main`
+
+Cuando hayas terminado una tarea o avance de tu módulo y quieras que se integre a la versión oficial:
+
+1. Entra al repositorio en GitHub: [HOTELAVENTURA-FRONTEND](https://github.com/lFateGC/HOTELAVENTURA-FRONTEND).
+2. Verás una barra amarilla con el botón **"Compare & pull request"**. Haz clic sobre él.
+   *(Si no aparece, ve a la pestaña **Pull requests** ➔ botón verde **New pull request**)*.
+3. Configura las ramas de la siguiente forma:
+   * **base:** `main` ⬅️ **compare:** `TuNombre` *(ej. `Hector`)*.
+4. Escribe un título claro (ejemplo: `feat: Módulo de servicios de habitaciones completo`).
+5. En la descripción, detalla brevemente qué pantallas o componentes agregaste.
+6. En el panel lateral derecho, en la sección **Reviewers**, asigna al Líder del Proyecto (**Kenny Garay** / `lFateGC`).
+7. Haz clic en **"Create pull request"**.
+8. El Líder revisará el código, verificará que no rompa la compilación y lo aprobará para unirlo a `main`.
+
+---
+
+#### Paso 7: ¿Qué hacer si hay un conflicto de código?
+Si al hacer `git pull origin main` sale un mensaje de **CONFLICT**:
+1. Abre los archivos marcados en rojo en **Visual Studio Code**.
+2. Verás opciones encima de las líneas en conflicto:
+   * **Accept Current Change:** Mantiene lo que tú escribiste.
+   * **Accept Incoming Change:** Acepta lo que vino de `main`.
+   * **Accept Both Changes:** Mantiene ambas cosas.
+3. Selecciona la opción adecuada según el caso, guarda el archivo (`Ctrl + S`), y ejecuta en la terminal:
+   ```bash
+   git add .
+   git commit -m "merge: resolución de conflictos con main"
+   git push origin TuNombre
+   ```
+
+---
+
+### 7.3. Reglas de Oro para el Equipo
+1. 🚫 **NUNCA hagas commits directos sobre la rama `main`**. Trabaja siempre en tu rama con tu nombre.
+2. 🔄 **SIEMPRE haz `git pull origin main`** antes de empezar a trabajar para tener los últimos cambios del equipo.
+3. 🧪 **SIEMPRE ejecuta `npm run build`** antes de hacer push para garantizar que no haya errores de compilación ni de TypeScript.
+4. 💬 **Haz commits frecuentes y con mensajes claros**. No esperes al final de la semana para hacer un solo commit gigante.
 
 ---
 
