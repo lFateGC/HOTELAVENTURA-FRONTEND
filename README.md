@@ -1,6 +1,6 @@
 # Hotel Aventura — Frontend (SPA React)
 
-> **Curso:** Herramientas de Desarrollo (Sección 39171) — Sistema web modular para la gestión hotelera integral en tiempo real con control de versiones en Git.  
+> **Curso:** Herramientas de Desarrollo (Sección 39171)  
 > **Docente:** Agullas Suares, Marlene Pilar  
 > **Año Académico:** 2026  
 > **Repositorio Oficial Frontend:** [https://github.com/lFateGC/HOTELAVENTURA-FRONTEND](https://github.com/lFateGC/HOTELAVENTURA-FRONTEND)  
@@ -12,19 +12,21 @@
 * **Nombre del Proyecto:** Hotel Aventura — Frontend (Sistema de Reservas y Gestión de Habitaciones)
 * **Curso:** Herramientas de Desarrollo (Sección 39171)
 * **Docente:** Agullas Suares, Marlene Pilar
-* **Tipo de Proyecto:** Single Page Application (SPA) con Arquitectura Desacoplada (Frontend en React 19 + TypeScript + Vite)
+* **Tipo de Proyecto:** Aplicación Web Frontend (React 19 + TypeScript + Vite) con arquitectura desacoplada
 
 ---
 
 ## 2. Descripción del Proyecto
-El frontend del sistema **Hotel Aventura** proporciona una interfaz moderna, interactiva y reactiva que digitaliza y moderniza la operativa diaria del hotel, reemplazando las libretas y hojas de cálculo manuales tradicionales.
+Este repositorio contiene el **Frontend** del sistema para el **Hotel Aventura**, desarrollado como parte del curso de Herramientas de Desarrollo.
 
-La aplicación permite a los recepcionistas, administradores y personal de servicio:
-* Visualizar en tiempo real el estado y disponibilidad de las habitaciones a través de un **Rack Interactivo** para evitar el sobrealquiler (*overbooking*).
-* Procesar registros de **Check-In / Check-Out** tanto en modalidad **Pernocte** (noche completa) como **Day Use** (estancias diurnas por horas).
-* Administrar la base de datos de **Huéspedes** con validación y búsqueda rápida de documentos de identidad.
-* Coordinar las tareas operativas de **Limpieza, Mantenimiento y Control de Averías** por habitación.
-* Gestionar las ventas del hotel mediante un **Punto de Venta (POS)** integrado con control de inventario y arqueo de caja chica.
+El proyecto nace para solucionar los problemas reales que enfrenta el hotel al llevar su administración en cuadernos y hojas de Excel: confusiones al asignar habitaciones, reservas cruzadas o sobreventas (*overbooking*), demoras al atender a los huéspedes en recepción y falta de control en los consumos y el cuadre de caja chica.
+
+Con esta aplicación web buscamos que el recepcionista y el personal del hotel tengan una herramienta rápida, visual y fácil de usar en su día a día. Las funciones principales que cubre la interfaz son:
+* **Rack de Habitaciones:** Vista interactiva para ver qué habitaciones están libres, ocupadas, en limpieza o en mantenimiento en tiempo real.
+* **Registro de Check-In y Check-Out:** Formularios rápidos para registrar entradas tanto por noche completa (**Pernocte**) como por horas (**Day Use**).
+* **Gestión de Huéspedes:** Búsqueda rápida por DNI o nombre para no tener que pedir los mismos datos a clientes frecuentes.
+* **Servicios y Operaciones:** Panel para que el personal de limpieza y mantenimiento reporte qué habitaciones ya están listas y registre averías técnicas.
+* **Punto de Venta (POS) y Caja:** Registro de venta de bebidas, snacks o servicios adicionales con cobro inmediato y control del dinero de caja chica.
 
 ---
 
@@ -310,17 +312,17 @@ Si al hacer `git pull origin main` sale un mensaje de **CONFLICT**:
 
 ## 8. Estado del Proyecto / Avance Actual (Avance 1)
 
-### Implementado en este Avance 1:
-* **Entorno y Herramientas:** Configuración completa de React 19, TypeScript y Vite 8 con Oxlint.
-* **Separación de Repositorios:** Repositorio Frontend desacoplado e independiente del Backend.
-* **Estructura de Componentes:** Definición de la arquitectura modular de carpetas (`components/`, `pages/`, `services/`, `types/`).
-* **Verificación de Compilación:** Build de producción verificado al 100% libre de errores.
-* **Gestión de Proyecto en GitHub:** Matriz de integrantes, roles, ramas individuales y seguimiento de backlog con GitHub Issues.
+### Lo que tenemos listo en este Avance 1:
+* **Configuración del proyecto:** Entorno de React 19 con TypeScript, Vite y Oxlint listo y funcionando.
+* **Separación de repositorios:** Separamos el Frontend y el Backend en dos repositorios independientes para trabajar con mayor orden y comodidad.
+* **Estructura base de carpetas:** Organización de componentes, páginas, servicios y estilos preparada para empezar a programar cada módulo.
+* **Build verificado:** Compilación probada con `npm run build` sin ningún error.
+* **Organización en GitHub:** Repositorio creado con ramas para cada integrante (`Kenny`, `Hector`, `David`, `Erik`, `Eliseo`) y el seguimiento de tareas en los GitHub Issues.
 
-### Pendiente para Siguientes Avances:
-* **Sprint 2:** Maquetación inicial de interfaces por módulo e integración de componentes visuales.
-* **Sprint 3 (Frontend UI/UX Dinámico):** Conexión con la API REST del Backend (Spring Boot 4), manejo reactivo del estado de habitaciones y validación de formularios.
-* **Sprint 4 (Despliegue y QA):** Despliegue en la nube mediante **Vercel**, pruebas de usabilidad y sustentación final.
+### Lo que trabajaremos en los siguientes avances:
+* **Sprint 2:** Maquetar las pantallas principales de cada módulo (Rack de habitaciones, Login, Formularios de entrada y POS).
+* **Sprint 3:** Conectar las pantallas del Frontend con la API REST del Backend y validar que los formularios respondan en tiempo real.
+* **Sprint 4:** Subir la aplicación a internet usando **Vercel**, hacer pruebas completas de uso y preparar la sustentación final.
 
 ---
 
