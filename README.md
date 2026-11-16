@@ -62,23 +62,23 @@ HOTELAVENTURA-FRONTEND/
 │   ├── favicon.svg          # Favicon oficial del Hotel Aventura
 │   └── icons.svg            # Sprite optimizado de iconos vectoriales SVG
 ├── src/
-│   ├── app/                 # Componente principal de la aplicación (App.tsx)
-│   ├── assets/              # Imágenes, logotipos e ilustraciones (hero.png, react.svg, vite.svg)
-│   ├── components/          # Componentes de interfaz reutilizables (Botones, Modales, Tablas, Badges)
+│   ├── app/                 # Componente principal de la aplicación
+│   ├── assets/              # Imágenes, logotipos e ilustraciones
+│   ├── components/          # Componentes de interfaz reutilizables
 │   ├── config/              # Variables de entorno y configuración de conexión con la API Backend
-│   ├── hooks/               # Custom hooks reutilizables (useAuth, useHabitaciones, usePOS)
-│   ├── layouts/             # Plantillas de diseño estructural (Sidebar, Topbar, MainLayout)
+│   ├── hooks/               # Custom hooks reutilizables
+│   ├── layouts/             # Plantillas de diseño estructural
 │   ├── pages/               # Vistas principales de cada módulo:
 │   │   ├── Login/           # Vista de autenticación y control de acceso
 │   │   ├── Rack/            # Matriz interactiva de habitaciones en tiempo real
-│   │   ├── CheckIn/         # Formularios de entrada (Pernocte y Day Use)
+│   │   ├── CheckIn/         # Formularios de entrada
 │   │   ├── Huespedes/       # Directorio, historial y registro de clientes
 │   │   ├── Operaciones/     # Tablero operativo de limpieza y control de averías
 │   │   └── POS/             # Terminal de punto de venta, cobros y arqueo de caja
 │   ├── services/            # Clientes de consumo de API REST hacia el Backend Spring Boot
 │   ├── styles/              # Hojas de estilo CSS globales, variables de tema y módulos
 │   ├── types/               # Modelos e interfaces TypeScript para tipado estricto
-│   ├── utils/               # Funciones auxiliares (formateo de moneda PEN, validaciones DNI)
+│   ├── utils/               # Funciones auxiliares
 │   └── main.tsx             # Punto de entrada y montaje del árbol DOM de React
 ├── .gitignore               # Archivos y carpetas omitidos por el control de versiones
 ├── .oxlintrc.json           # Reglas de validación estática de código
@@ -303,10 +303,10 @@ Si al hacer `git pull origin main` sale un mensaje de **CONFLICT**:
 ---
 
 ### 7.3. Reglas de Oro para el Equipo
-1. 🚫 **NUNCA hagas commits directos sobre la rama `main`**. Trabaja siempre en tu rama con tu nombre.
-2. 🔄 **SIEMPRE haz `git pull origin main`** antes de empezar a trabajar para tener los últimos cambios del equipo.
-3. 🧪 **SIEMPRE ejecuta `npm run build`** antes de hacer push para garantizar que no haya errores de compilación ni de TypeScript.
-4. 💬 **Haz commits frecuentes y con mensajes claros**. No esperes al final de la semana para hacer un solo commit gigante.
+1. **NUNCA hagas commits directos sobre la rama `main`**. Trabaja siempre en tu rama con tu nombre.
+2. **SIEMPRE haz `git pull origin main`** antes de empezar a trabajar para tener los últimos cambios del equipo.
+3. **SIEMPRE ejecuta `npm run build`** antes de hacer push para garantizar que no haya errores de compilación ni de TypeScript.
+4. **Haz commits frecuentes y con mensajes claros**. No esperes al final de la semana para hacer un solo commit gigante.
 
 ---
 
