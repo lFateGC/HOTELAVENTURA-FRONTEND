@@ -1190,7 +1190,7 @@ export const PortalClientePage: React.FC = () => {
                 </button>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1.8fr 1fr', gap: 24 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 24 }}>
                 <div className="table-card" style={{ padding: 28 }}>
                   {/* PASO 1: ELEGIR NÚMERO DE HABITACIÓN DISPONIBLE Y SERVICIOS EXTRA */}
                   {pasoWizard === 1 && (
